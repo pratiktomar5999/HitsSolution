@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Hits Solution</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="app_id">UAWPY9aaulJOPnSJO6hxs3hH1e1iJhMf5iTfyGPs</string>
+    <string name="app_client_key">9QxlZWNyrnpdHGF1eY6FCEeiiK93p3aRcJYvOrHQ</string>
+    <string name="app_server_url">https://parseapi.back4app.com/</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
