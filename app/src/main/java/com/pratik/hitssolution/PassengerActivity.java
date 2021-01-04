@@ -100,6 +100,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
             }else{
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
                 Location currentPassengerLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                updateCameraPassengerLocation(currentPassengerLocation);
             }
         }
     }

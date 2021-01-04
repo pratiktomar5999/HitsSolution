@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
+import com.parse.Parse;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
@@ -37,7 +38,11 @@ public class MainActivity extends AppCompatActivity {
         ParseInstallation.getCurrentInstallation().saveInBackground();
 
         if (ParseUser.getCurrentUser() != null){
-            transitionPassengerActivity();
+            if (ParseUser.getCurrentUser().get("as").equals("Passenger")) {
+                transitionPassengerActivity();
+            } else if (ParseUser.getCurrentUser().get("as").equals("Driver")) {
+                transitionDriverReqListActivity();
+            }
         }
 
         edtUsername = findViewById(R.id.edt_username);
@@ -62,8 +67,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void done(ParseUser user, ParseException e) {
                         if (user != null && e == null) {
-                            if (user.get("as") == "Passenger"){
+                            if (user.get("as").equals("Passenger")){
                                transitionPassengerActivity();
+                            }
+                            else if (user.get("as").equals("Driver")){
+                                transitionDriverReqListActivity();
                             }
                         } else {
                             Toast.makeText(MainActivity.this, "Incorrect credentials", Toast.LENGTH_SHORT).show();
@@ -97,8 +105,12 @@ public class MainActivity extends AppCompatActivity {
                    @Override
                    public void done(ParseException e) {
                        if (e == null) {
-                           Toast.makeText(MainActivity.this,edtUsername + " Signed in",Toast.LENGTH_SHORT).show();
-                           transitionPassengerActivity();
+                           if (appUser.get("as").equals("Passenger")) {
+
+                               transitionPassengerActivity();
+                           }else if (appUser.get("as").equals("Driver")){
+                               transitionDriverReqListActivity();
+                           }
                        }else {
                            Toast.makeText(MainActivity.this,e + "",Toast.LENGTH_SHORT).show();
                        }
@@ -180,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
                                             if (user != null && e == null) {
                                                 user.put("as", "Driver");
                                                 user.saveInBackground();
+                                                transitionDriverReqListActivity();
                                             }
                                         }
                                     });
@@ -210,5 +223,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void transitionDriverReqListActivity(){
+
+        if(ParseUser.getCurrentUser() != null){
+            if (ParseUser.getCurrentUser().get("as").equals("Driver")){
+                startActivity(new Intent(MainActivity.this,DriverRequestList.class));
+                finish();
+            }
+        }
+    }
+
 
 }
