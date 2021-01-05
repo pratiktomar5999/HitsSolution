@@ -143,6 +143,7 @@ public class PassengerActivity extends FragmentActivity implements OnMapReadyCal
                         request.put("username", ParseUser.getCurrentUser().getUsername());
                         ParseGeoPoint userLocation = new ParseGeoPoint(passengerCurrentLocation.getLatitude(), passengerCurrentLocation.getLongitude());
                         request.put("passengerLocation", userLocation);
+                        request.put("confirm","Pending");
                         request.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {

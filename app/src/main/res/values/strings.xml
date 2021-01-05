@@ -13,4 +13,5 @@
     <string name="app_client_key">9QxlZWNyrnpdHGF1eY6FCEeiiK93p3aRcJYvOrHQ</string>
     <string name="app_server_url">https://parseapi.back4app.com/</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_view_request_location">Map</string>
 </resources>
